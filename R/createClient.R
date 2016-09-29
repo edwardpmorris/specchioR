@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' # Set the specchio client path (adjust this for your system)
-#' require(speccioR)
+#' require(specchioR)
 #' setSpecchioPath("/home/edward/SPECCHIO")
 #' sp.client <- createClient()
 createClient <- function(server.id = 1, speccio.path=getSpecchioPath()){

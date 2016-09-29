@@ -22,7 +22,8 @@ when possible, rather than write native R code.
 
 + [x] Setup paths to SPECCHIO java client and add user credentials to SPECCHIO configuration.
 + [x] Launch native SPECCHIO java client
-+ [] create connection to SPECCHIO java client library using rJava
++ [x] Create connection to SPECCHIO java client library using rJava
++ [] Querie a SPECCHIO database
 
 ## Resources
 

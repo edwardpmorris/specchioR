@@ -1,0 +1,66 @@
+---
+title: "Using specchioR"
+author: "Edward P. Morris"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The R package `specchioR` aims to provide simple wrappers to allow interaction with the spectral information system [SPECCHIO](http://www.specchio.ch) Java client. This client provides many functions and allows storage and query of a large database of ground-based
+spectrometry. Two main options for databases exist; using the global database, kindly hosted by the University of Zurich or hosting your own database (with setup facilitated
+using a virtualisation system).
+
+## System requirements
+The package has been developed in UNIX (Ubuntu 16.04 LTS), specifics for other operating systems will be updated as they are tested.
+
+### UNIX
++ Java and Java Development Kit (JDK);
+    + check if JRE or JDK is needed!
+    + Ubuntu 16.04: `sudo apt-get update; sudo apt-get install default-jdk`
++ SPECCIO Java client;
+    + download installer from http://specchio.ch/app_download.php
+    + extract installer
+    + make `specchio-client-installer.jar` executable
+    + double click to install and follow instructions
+    + keep note of the instalation directory
++ In R the rJava package is needed (requires JDK?)
+
+## Setup rJava for interaction with the SPECCHIO client
+Once all of the requirements are met specchioR needs to know the path to the SPECCHIO directory, if you followed the default option this should be `$HOME/SPECCHIO`. We can permanently store this (in `extdata/specchioR_config.yaml`) as:
+
+```{r setpath}
+require(specchioR)
+setSpecchioPath("~/SPECCHIO")
+getSpecchioPath()
+```
+We also need to define the server parameters for the SPECCHIO client to connect, here is an example using the (test) global database hosted by Univ. Zurich, the function apends
+an entry to the db_config.txt file in the SPECCHIO directory, registry of your `user_name` and `password` is probably easiset done for the first time directly using the Java client.
+
+We can open the client from R using `launchGUI()`. Navigating to 'Database/Create a new user account' opens a dialog that can be used make your user account. Once this is done we can permantly store the connection details as:
+
+```{r setserver}
+addServerToConfig(protocol="https",
+                  server="v473.vanager.de",
+                  port="443",
+                  path="/specchio_service",
+                  user_name="your_user_name",
+                  password="your_password",
+                  data_source="jdbc/specchio_test",
+                  speccio.path=getSpecchioPath()
+                  )
+```
+
+## Starting the SPECCHIO client
+Once these setup options are stored, we can now call the client ready for making queries:
+
+```{r createclient}
+# Connect to the client using the first server definition
+sp.client <- createClient(server.id = 1, speccio.path=getSpecchioPath())
+```
+
+
+

@@ -26,7 +26,7 @@ addServerToConfig <- function(protocol="https",
                       password="",
                       data_source="jdbc/specchio_test",
                       speccio.path=getSpecchioPath()){
-  config.path <- paste0(speccio.path, "db_config.txt")
+  config.path <- paste0(speccio.path, "/db_config.txt")
   txt <- paste(protocol, server, port, path, user_name, password, data_source, sep=",")
   write(x = txt, file = config.path, append = T)
   print(paste(txt, "written to", config.path))
