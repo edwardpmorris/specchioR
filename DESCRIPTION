@@ -1,0 +1,20 @@
+Package: specchioR
+Type: Package
+Title: Interact With SPECCIO API
+Version: 0.1.0
+Author: Edward P. Morris
+Maintainer: Edward P. Morris <edward.morris@uca.es>
+Description: Basic R wrapper to interact with the SPECCIO Spectral Information System
+(https://github.com/ahueni/SPECCHIO).
+License: GPL-3.0
+LazyData: TRUE
+Imports:
+    rJava (>= 0.9-8),
+    yaml (>= 2.1.13)
+RoxygenNote: 5.0.1
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+
+

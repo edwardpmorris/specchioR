@@ -1,0 +1,13 @@
+# A named list of SPECCHIO servers
+specchio_zurich_test:
+ Name: "Worldwide SPECCHIO Online System, hosted by University of Zurich (TEST)"
+ Web Application Server: "v473.vanager.de"
+ Port: 443
+ Application Path: "/specchio_service"
+ Data Source: "jdbc/specchio_test"
+specchio_zurich_prod:
+ Name: "Worldwide SPECCHIO Online System, hosted by University of Zurich (PRODUCTION)"
+ Web Application Server: "v473.vanager.de"
+ Port: 443
+ Application Path: "/specchio_service"
+ Data Source: "jdbc/specchio_prod"
